@@ -1,13 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+:root {
+   --clr-dark: #161616;
+   --clr-gray: #292C31;
+   --clr-light: #ffffff;
+   --clr-theme: #1B3AF5;
+
+   --fs-big: 48px;
+   --fs-l: 24px;
+   --fs-m: 20px;
+   --fs-s: 16px;
+
+   --fw-regular: 400;
+   --fw-medium: 600;
+   --fw-bold: 800;
+
+   /* border-radius */
+   --br-s: 2px;
+   --br-m: 4px;
+   --br-l: 8px;
+   --br-img: 16px;
+
+   /* margin or padding */
+   --mp-text: 8px;
+   --mp-title: 12px;
+   --mp-img: 24px;
+   --mp-container: 64px;
+}
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+html {
+   scroll-behavior: smooth;
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+   font-family: 'Poppins', sans-serif;
+   font-size: var(--fs-s);
+   font-weight: var(--fw-regular);
+   line-height: 1.75;
+   letter-spacing: 0.75px;
+
+   color: var(--clr-dark);
+   background-color: var(--clr-light);
+   padding: 30px;
+
+   width: 100vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+ul {
+   list-style: none;
+}
+a {
+   color: var(--clr-dark);
+   text-decoration: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ---------- Top section  */
+.container_top {
+   width: 380px;
+   margin-bottom: var(--mp-container);
 }
+.logo_text {
+   font-size: var(--fs-l);
+   font-weight: var(--fw-bold);
+   color: var(--clr-theme);
+   margin-bottom: var(--mp-text);
+}
+.airplane_img {
+   width: 100%;
+   border-radius: var(--br-img);
+   margin-top: var(--mp-img)
+}
+
+/* ---------- Body section  */

@@ -1,8 +1,11 @@
+import { Top } from "./Top";
+import { Body } from "./Body";
 
 function App() {
    return (
       <div className="App">
-         Hello
+         <Top />
+         <Body />
       </div>
    );
 }
