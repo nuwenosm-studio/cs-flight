@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
    --clr-dark: #161616;
@@ -12,8 +12,8 @@
    --fs-s: 16px;
 
    --fw-regular: 400;
-   --fw-medium: 600;
-   --fw-bold: 800;
+   --fw-medium: 500;
+   --fw-bold: 700;
 
    /* border-radius */
    --br-s: 2px;
@@ -22,6 +22,7 @@
    --br-img: 16px;
 
    /* margin or padding */
+   --mp-button: 4px 8px;
    --mp-text: 8px;
    --mp-title: 12px;
    --mp-img: 24px;
@@ -58,6 +59,18 @@ a {
    color: var(--clr-dark);
    text-decoration: none;
 }
+button {
+   cursor: pointer;
+   background-color: var(--clr-dark);
+   color: var(--clr-light);
+   padding: var(--mp-button);
+   border: 0.5px solid var(--clr-dark);
+   border-radius: var(--br-m);
+   transition: 0.3s ease-in-out;
+}
+button:hover {
+   background-color: var(--clr-theme);
+}
 
 /* ---------- Top section  */
 .container_top {
@@ -67,8 +80,10 @@ a {
 .logo_text {
    font-size: var(--fs-l);
    font-weight: var(--fw-bold);
-   color: var(--clr-theme);
    margin-bottom: var(--mp-text);
+}
+.logo_subtext {
+   font-weight: var(--fw-medium);
 }
 .airplane_img {
    width: 100%;
@@ -77,3 +92,23 @@ a {
 }
 
 /* ---------- Body section  */
+.date_flight {
+   color: red;
+   font-size: var(--fs-big);
+   font-weight: var(--fw-bold);
+}
+
+/* ---------- ---------- Flight Board  */
+.container_board {
+   width: 100%;
+   /* background-color: aqua; */
+}
+.container_board thead th {
+   width: 120px;
+}
+.container_board tbody tr {
+   height: 48px;
+}
+.btn_long {
+   padding: 6px 18px;
+}
