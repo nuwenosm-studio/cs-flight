@@ -31,16 +31,6 @@ export const flightData = [
       price: 600,
    },
    {
-      id: 3,
-      fromCity: "Boston",
-      toCity: "Las Vegas",
-      flightNumber: 'BL03',
-      departureTime: '3 AM',
-      arrivalTime: '9 AM',
-      seatAvailability: 6,
-      price: 600,
-   },
-   {
       id: 4,
       fromCity: "Las Vegas",
       toCity: "Boston",

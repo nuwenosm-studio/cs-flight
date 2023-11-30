@@ -1,21 +1,24 @@
 import { useState } from 'react';
+import { Form } from './Form';
 import { flightData } from '../constants/FlightData';
 
-export const Modal = ({ fromCity, toCity, onClose }) => {
+const findFlight = (fromCity, toCity) => {
+   const matchingFlights = flightData.filter((flight) => {
+      return (
+         flight.fromCity === fromCity &&
+         flight.toCity === toCity
+      );
+   });
+   return matchingFlights;
+};
 
-   const findFlight = (fromCity, toCity) => {
-      const matchingFlights = flightData.filter((flight) => {
-         return (
-            flight.fromCity === fromCity &&
-            flight.toCity === toCity
-         );
-      });
-      return matchingFlights;
-   };
+
+export const Modal = ({ fromCity, toCity, onClose }) => {
 
    const [flights, setFlights] = useState(findFlight(fromCity, toCity));
    const [selectedFlight, setSelectedFlight] = useState(null);
    const [isSwapped, setIsSwapped] = useState(false);
+   const [successMessage, setSuccessMessage] = useState('');
 
    const handleSwapCities = () => {
       const newFromCity = isSwapped ? fromCity : toCity;
@@ -24,31 +27,47 @@ export const Modal = ({ fromCity, toCity, onClose }) => {
       setFlights(findFlight(newFromCity, newToCity));
    };
 
-   const handleBuyNow = () => {
-      if (selectedFlight) {
-         // Decrease the number of available seats
-         const updatedFlights = flights.map((flight) => {
-            if (flight.id === selectedFlight.id && flight.seatAvailability > 0) {
-               return {
-                  ...flight,
-                  seatAvailability: flight.seatAvailability - 1,
-               };
-            }
-            return flight;
-         });
-         setFlights(updatedFlights);
-      }
+   const handlePurchase = (formData) => {
+      // Decrease the number of available seats
+      const updatedFlights = flights.map((flight) => {
+         if (flight.id === selectedFlight.id && 
+            flight.seatAvailability > 0) {
+            return {
+               ...flight,
+               seatAvailability: flight.seatAvailability - 1,
+            };
+         }
+         return flight;
+      });
+      setFlights(updatedFlights);
+
+      // Show success message
+      setSuccessMessage('Ticket purchased successfully!');
    };
 
    
    return (
       <div className="modal">
+         {/* The Modal Heading */}
          <div className="modal_bigText">Available Flights</div>
          <button onClick={handleSwapCities}>Swap Cities</button>
 
-         <ul className="flight_tickets">
+         {/* The Ticket Purchase Form
+         Show up only selected a ticket */}
+         {selectedFlight && (
+            <div>
+               <Form 
+                  selectedFlight={selectedFlight} 
+                  onPurchase={handlePurchase} 
+               />
+            </div>
+         )}
+
+
+         {/* The Ticket Information */}
+         <div className="flight_tickets">
             {flights.map((flight) => (
-               <li 
+               <div className="ticket" 
                   key={flight.id} 
                   onClick={() => setSelectedFlight(flight)}
                >
@@ -73,15 +92,16 @@ export const Modal = ({ fromCity, toCity, onClose }) => {
                      <strong>Price: </strong>
                      ${flight.price}
                   </div>
-               </li>
+               </div>
             ))}
-         </ul>
-
-         <button onClick={handleBuyNow} disabled={!selectedFlight}>
-            Buy Now
-         </button>
-
+         </div>
          <button onClick={onClose}>Close</button>
+
+         {successMessage && 
+            <div className="success_msg">
+               {successMessage}
+            </div>
+         }
       </div>
    )
 }

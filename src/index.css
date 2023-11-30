@@ -5,7 +5,7 @@
    --clr-gray: #292C31;
    --clr-light: #ffffff;
    --clr-theme: #1B3AF5;
-   --clr-hover: #0088ff;
+   --clr-hover: #84b6e1;
    --clr-disabled: #b2b2b2;
 
    --fs-big: 48px;
@@ -143,15 +143,19 @@ button:hover {
 .flight_tickets {
    margin-top: var(--mp-title);
 }
-.modal li {
+.ticket {
    cursor: pointer;
    padding: 10px;
    border: 1px solid var(--clr-gray);
    border-radius: var(--br-m);
    margin-bottom: var(--mp-title);
+   transition: 0.5s ease-in-out;
 }
-.modal li:hover {
+.ticket:hover {
    background-color: var(--clr-hover);
+}
+.ticket:active {
+   background-color: red;
 }
 .modal button {
    padding: var(--mp-title);
@@ -162,4 +166,23 @@ button:hover {
    background-color: var(--clr-disabled);
    cursor: not-allowed;
 }
- 
+
+/* ---- ---- ---- ---- Form Modal  */
+.container_form {
+   display: flex;
+   flex-direction: column;
+   margin: 20px 0;
+}
+.container_form label {
+   margin-bottom: var(--mp-title);
+}
+.container_form input {
+   float: right;
+   padding: var(--mp-text);
+   width: 180px;
+}
+.success_msg {
+   color: red;
+   font-weight: var(--fw-bold);
+   margin-top: var(--mp-text);
+}
