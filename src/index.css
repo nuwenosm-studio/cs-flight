@@ -5,6 +5,8 @@
    --clr-gray: #292C31;
    --clr-light: #ffffff;
    --clr-theme: #1B3AF5;
+   --clr-hover: #0088ff;
+   --clr-disabled: #b2b2b2;
 
    --fs-big: 48px;
    --fs-l: 24px;
@@ -22,10 +24,11 @@
    --br-img: 16px;
 
    /* margin or padding */
-   --mp-button: 4px 8px;
-   --mp-text: 8px;
+   --mp-button: 4px 10px;
+   --mp-text: 4px;
    --mp-title: 12px;
    --mp-img: 24px;
+   --mp-modal: 32px;
    --mp-container: 64px;
 }
 * {
@@ -64,7 +67,7 @@ button {
    background-color: var(--clr-dark);
    color: var(--clr-light);
    padding: var(--mp-button);
-   border: 0.5px solid var(--clr-dark);
+   border: none;
    border-radius: var(--br-m);
    transition: 0.3s ease-in-out;
 }
@@ -72,7 +75,7 @@ button:hover {
    background-color: var(--clr-theme);
 }
 
-/* ---------- Top section  */
+/* ---- Top section  */
 .container_top {
    width: 380px;
    margin-bottom: var(--mp-container);
@@ -91,17 +94,16 @@ button:hover {
    margin-top: var(--mp-img)
 }
 
-/* ---------- Body section  */
+/* ---- Body section  */
 .date_flight {
    color: red;
    font-size: var(--fs-big);
    font-weight: var(--fw-bold);
 }
 
-/* ---------- ---------- Flight Board  */
+/* ---- ---- Flight Board  */
 .container_board {
    width: 100%;
-   /* background-color: aqua; */
 }
 .container_board thead th {
    width: 120px;
@@ -110,5 +112,54 @@ button:hover {
    height: 48px;
 }
 .btn_long {
-   padding: 6px 18px;
+   padding: 8px 18px;
 }
+
+/* ---- ---- ---- Flight Modal  */
+.modal {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 380px;
+   min-height: 620px;
+   padding: var(--mp-modal);
+   border-radius: var(--br-l);
+   background-color: var(--clr-light);
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   z-index: 10;
+}
+.modal_bigText {
+   font-size: var(--fs-l);
+   font-weight: var(--fw-bold);
+}
+.modal_subText {
+   margin-bottom: var(--mp-title);
+}
+.space_css {
+   display: inline-block;
+   width: 20px;
+}
+.flight_tickets {
+   margin-top: var(--mp-title);
+}
+.modal li {
+   cursor: pointer;
+   padding: 10px;
+   border: 1px solid var(--clr-gray);
+   border-radius: var(--br-m);
+   margin-bottom: var(--mp-title);
+}
+.modal li:hover {
+   background-color: var(--clr-hover);
+}
+.modal button {
+   padding: var(--mp-title);
+   margin-top: 10px;
+   margin-right: 12px;
+}
+.modal button:disabled {
+   background-color: var(--clr-disabled);
+   cursor: not-allowed;
+}
+ 

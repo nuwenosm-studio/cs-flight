@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FlightModal } from './FlightModal';
+import { Modal } from './Modal';
 import { cities } from '../constants/FlightData';
 
 export const FlightBoard = () => {
@@ -14,25 +14,31 @@ export const FlightBoard = () => {
    return (
       <div className="container_board">
          <table>
+            {/* Table Header */}
             <thead>
                <tr>
-                  {/* Column Header */}
                   <th>From</th>
                   <th>To</th>
                   <th>Tickets</th>
                </tr>
             </thead>
 
+            {/* Table Body */}
             <tbody>
                {cities.map((fromCity) => (
                   <tr key={fromCity}>
-                     {/* Row [From - To - button]  */}
+                     {/* From City */}
                      <td>{fromCity}</td>
+
+                     {/* To City */}
                      <td>
                         <select
-                           value={selectedTo}
-                           onChange={(e) => setSelectedTo(e.target.value)}
+                           onChange={(e) => {
+                              setSelectedTo(e.target.value);
+                              setSelectedFrom(fromCity);
+                           }}
                         >
+                           <option>Choose city</option>
                            {cities
                               .filter((toCity) => toCity !== fromCity)
                               .map((toCity) => (
@@ -42,6 +48,7 @@ export const FlightBoard = () => {
                            ))}
                         </select>
                      </td>
+                     {/* Ticket Button */}
                      <td>
                         <button
                            className="btn_long"
@@ -54,13 +61,17 @@ export const FlightBoard = () => {
             </tbody>
          </table>
 
+
          {isModalOpen && (
-            <FlightModal
-               from={selectedFrom}
-               to={selectedTo}
+            <Modal
+               fromCity={selectedFrom}
+               toCity={selectedTo}
                onClose={() => setIsModalOpen(false)}
             />
          )}
       </div>
    )
 }
+
+
+
