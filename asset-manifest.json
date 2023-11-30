@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cs-flight/static/css/main.621b73f0.css",
+    "main.js": "/cs-flight/static/js/main.d66c31aa.js",
+    "index.html": "/cs-flight/index.html",
+    "main.621b73f0.css.map": "/cs-flight/static/css/main.621b73f0.css.map",
+    "main.d66c31aa.js.map": "/cs-flight/static/js/main.d66c31aa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.621b73f0.css",
+    "static/js/main.d66c31aa.js"
+  ]
+}
